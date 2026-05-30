@@ -1,4 +1,4 @@
-# macro-modeling: Predicting Recipe Calories for Diet Planning
+# Meal Macros: Predicting Recipe Calories for Diet Planning
 
 By Elizabeth Kao
 
