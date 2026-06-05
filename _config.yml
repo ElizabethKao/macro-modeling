@@ -1,5 +1,5 @@
-title: Predicting Recipe Calories for Diet Planning
-description: Research, documentation, and analysis of macro models.
-remote_theme: pages-themes/cayman@v0.2.0
+title: Meal Macros
+description: Predicting Recipe Calories for Diet Planning.
+remote_theme: pages-themes/minimal@v0.2.0
 plugins:
   - jekyll-remote-theme
