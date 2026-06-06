@@ -2,8 +2,6 @@
 
 **By Elizabeth Kao**
 
----
-
 ## Introduction
 
 This project uses the **Recipes and Ratings** dataset from food.com, which contains two tables: `RAW_recipes.csv` (recipes submitted since 2008, including ingredients, nutrition, prep time, and steps) and `RAW_interactions.csv` (recipe reviews and ratings). The two datasets are merged to compute an average rating per recipe. After merging and cleaning, the dataset contains **82,944 rows**.
@@ -34,7 +32,6 @@ The most relevant columns are:
 | `minutes` | Estimated prep and cook time |
 | `avg_rating` | Mean user rating (computed from interactions) |
 
----
 
 ## Data Cleaning and Exploratory Data Analysis
 
@@ -91,7 +88,6 @@ The table below shows median calories, protein, carbs, and average rating groupe
 | 16-20   |     382.60 |        26 |      11 |            5 |
 | 21+     |     435.70 |        26 |      13 |            5 |
 
----
 
 ## Assessment of Missingness
 
@@ -115,7 +111,6 @@ We expected missingness to be related to calories as very high-calorie or unusua
 
 Sodium is a nutritional fact with no logical connection to whether a user chooses to rate a recipe. Whether a recipe gets rated is driven by popularity and user engagement, not salt content. The permutation test gave a p-value of 0.6970, well above alpha = 0.05. We fail to reject the null. `avg_rating` missingness does not depend on sodium, consistent with our expectation.
 
----
 
 ## Hypothesis Testing
 
@@ -138,7 +133,6 @@ Visually, the two groups look almost identical. Both distributions are concentra
 
 Result: p-value = **0.0000**. We reject the null hypothesis at alpha = 0.05. High-protein recipes (mean rating 4.607) are rated statistically differently from low-protein recipes (mean rating 4.651). However, the magnitude of the difference (around 0.04 stars) is negligible in practical terms. Food.com users seem to rate recipes highly regardless of protein content suggesting taste and ease of preparation drive ratings more than nutritional profile.
 
----
 
 ## Framing a Prediction Problem
 
@@ -151,7 +145,6 @@ Result: p-value = **0.0000**. We reject the null hypothesis at alpha = 0.05. Hig
 
 We only use features available at the time of prediction: `n_steps`, `n_ingredients`, `total_fat`, `protein`, `carbs`, `sugar`. We intentionally exclude `avg_rating` since it requires post-submission user interactions.
 
----
 
 ## Baseline Model
 
@@ -173,7 +166,6 @@ Carbohydrates and sugar were intentionally left out. This mirrors the nutritiona
 
 The baseline explains roughly 77% of caloric variance but has a high RMSE. Carbohydrates, a primary food and fuel source at around 4 cal/g are excluded, which is the primary driver of prediction error. The final model addresses this directly.
 
----
 
 ## Final Model
 
@@ -202,7 +194,6 @@ The final model improved test RMSE from 159.16 to 29.45, a reduction of ~130 cal
 
 <iframe src="assets/pred_vs_actual.html" width="800" height="500" frameborder="0"></iframe>
 
----
 
 ## Fairness Analysis
 
